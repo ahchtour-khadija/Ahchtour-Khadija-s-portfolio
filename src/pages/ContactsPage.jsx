@@ -2,6 +2,7 @@ import { useState, useRef } from 'react';
 import emailjs from '@emailjs/browser';
 import { FaWhatsapp } from 'react-icons/fa';
 import Button from '../components/Button.jsx';
+import PageDecor from '../components/PageDecor.jsx';
 import { contactInfo, emailJSConfig, contactIntro } from '../data/contact.js';
 
 function ContactForm() {
@@ -305,8 +306,9 @@ function ContactInfo() {
 
 export default function ContactsPage() {
   return (
-    <>
+    <div className="page-decor">
       <header className="page-header">
+        <PageDecor variant="contact" count={3} />
         <div className="container">
           <p className="page-kicker" aria-hidden="true">{'// say-hello'}</p>
           <h1 className="page-title">Contact</h1>
@@ -316,6 +318,7 @@ export default function ContactsPage() {
 
       <main>
         <section className="content-section contact-page">
+          <PageDecor variant="contact" count={2} />
           <div className="container">
             <div className="contact-grid">
               <div className="contact-form-wrapper">
@@ -328,6 +331,6 @@ export default function ContactsPage() {
           </div>
         </section>
       </main>
-    </>
+    </div>
   );
 }

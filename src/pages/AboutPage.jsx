@@ -1,6 +1,7 @@
 import SectionTitle from '../components/SectionTitle.jsx';
 import ServiceCard from '../components/ServiceCard.jsx';
-import profileImg from '../assets/profile-img.jpeg';
+import PageDecor from '../components/PageDecor.jsx';
+import AboutLens from '../components/AboutLens.jsx';
 
 const aboutServices = [
   {
@@ -77,8 +78,9 @@ const techStack = [
 
 export default function AboutPage() {
   return (
-    <>
+    <div className="page-decor">
       <header className="page-header">
+        <PageDecor variant="about" count={3} />
         <div className="container">
           <p className="page-kicker" aria-hidden="true">{'// about-me'}</p>
           <h1 className="page-title">About Me</h1>
@@ -90,9 +92,7 @@ export default function AboutPage() {
         <section className="content-section about-hero">
           <div className="container">
             <div className="about-hero-grid">
-              <div className="about-image-wrapper">
-                <img src={profileImg} alt="Khadija Ahchtour" className="about-image" />
-              </div>
+              <AboutLens />
               <div className="about-content">
                 <h2 className="about-name">Khadija Ahchtour</h2>
                 <p className="about-role">Full Stack Web Developer</p>
@@ -119,6 +119,7 @@ export default function AboutPage() {
         </section>
 
         <section className="content-section services-section" aria-labelledby="about-services-title">
+          <PageDecor variant="about" count={2} />
           <div className="container">
             <SectionTitle title="What I Do" subtitle="Services built on practical experience with modern web technologies" id="about-services-title" />
             <div className="services-grid">
@@ -129,6 +130,6 @@ export default function AboutPage() {
           </div>
         </section>
       </main>
-    </>
+    </div>
   );
 }

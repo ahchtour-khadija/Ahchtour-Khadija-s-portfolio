@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback, useMemo } from 'react';
 import ProjectCard from '../components/ProjectCard.jsx';
 import ProjectModal from '../components/ProjectModal.jsx';
+import PageDecor from '../components/PageDecor.jsx';
 import { projects, projectNotice } from '../data/projects.js';
 import { sound } from '../utils/sound.js';
 
@@ -47,17 +48,16 @@ export default function ProjectsPage() {
 
   const openProject = (project) => {
     setSelectedProject(project);
-    sound.play('open');
   };
 
   const closeProject = useCallback(() => {
     setSelectedProject(null);
-    sound.play('close');
   }, []);
 
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === 'Escape' && selectedProject) {
+        sound.play('close');
         closeProject();
       }
     };
@@ -66,8 +66,9 @@ export default function ProjectsPage() {
   }, [selectedProject, closeProject]);
 
   return (
-    <>
+    <div className="page-decor">
       <header className="page-header">
+        <PageDecor variant="projects" count={3} />
         <div className="container">
           <p className="page-kicker" aria-hidden="true">{'// selected-work'}</p>
           <h1 className="page-title">My Projects</h1>
@@ -93,6 +94,7 @@ export default function ProjectsPage() {
         </section>
 
         <section className="content-section projects-grid-section" aria-labelledby="projects-grid-title">
+          <PageDecor variant="projects" count={2} />
           <div className="container">
             <div className="project-filters" role="group" aria-label="Filter projects by type">
               {FILTERS.map(({ key, label }) => (
@@ -143,6 +145,6 @@ export default function ProjectsPage() {
       {selectedProject && (
         <ProjectModal key={selectedProject.id} project={selectedProject} onClose={closeProject} />
       )}
-    </>
+    </div>
   );
 }

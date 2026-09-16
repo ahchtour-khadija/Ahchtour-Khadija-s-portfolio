@@ -2,7 +2,6 @@ import { useState, useEffect, useRef } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import Brand from './Brand.jsx';
 import SoundToggle from './SoundToggle.jsx';
-import { sound } from '../utils/sound.js';
 
 const navLinks = [
   { path: '/', label: 'Home' },
@@ -54,7 +53,6 @@ export default function Navbar() {
   const closeMenu = () => setIsOpen(false);
   const handleNav = () => {
     closeMenu();
-    sound.play('nav');
   };
 
   const handleToggle = (e) => {
@@ -63,8 +61,6 @@ export default function Navbar() {
     lastToggleRef.current = now;
     if (e && e.type === 'touchend') e.preventDefault();
     toggleMenu();
-    // Play nav tick immediately for hamburger, dedup with global handler
-    sound.play('nav');
   };
 
   return (

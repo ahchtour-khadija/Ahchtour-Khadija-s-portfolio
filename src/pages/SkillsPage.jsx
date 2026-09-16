@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { skills, skillIcons, skillCategories, categoryIcons } from '../data/skills.jsx';
+import PageDecor from '../components/PageDecor.jsx';
 import { useInView, useStaggeredInView } from '../hooks/useInView.js';
 
 function SkillBar({ skill, isVisible, delay = 0 }) {
@@ -81,8 +82,9 @@ export default function SkillsPage() {
   const [ref] = useInView();
 
   return (
-    <>
+    <div className="page-decor">
       <header className="page-header">
+        <PageDecor variant="skills" count={3} />
         <div className="container">
           <p className="page-kicker" aria-hidden="true">{'// my-stack'}</p>
           <h1 className="page-title">Skills</h1>
@@ -94,6 +96,7 @@ export default function SkillsPage() {
 
       <main>
         <section className="content-section skills-page" ref={ref} aria-labelledby="skills-intro">
+          <PageDecor variant="skills" count={2} />
           <div className="container">
             <p id="skills-intro" className="skills-intro">
               These proficiency levels represent my practical working experience with each technology.
@@ -117,6 +120,6 @@ export default function SkillsPage() {
           </div>
         </section>
       </main>
-    </>
+    </div>
   );
 }
