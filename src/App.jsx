@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { HashRouter, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar.jsx';
 import Footer from './components/Footer.jsx';
 import AmbientBackground from './components/AmbientBackground.jsx';
@@ -112,7 +112,7 @@ function App() {
   }, []);
 
   return (
-    <BrowserRouter basename="/Ahchtour-Khadija-s-portfolio">
+    <HashRouter>
       <div className="app">
         <AmbientBackground />
         <Navbar />
@@ -127,7 +127,7 @@ function App() {
         </main>
         <Footer />
       </div>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
