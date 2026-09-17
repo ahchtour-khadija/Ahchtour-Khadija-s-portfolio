@@ -246,7 +246,7 @@ function ContactInfo() {
     {
       label: 'Location',
       value: contactInfo.location,
-      href: null,
+      href: 'https://www.google.com/maps/search/?api=1&query=Agadir%2C%20Morocco',
       icon: (
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
           <path d="M12 21s-6-5.373-6-10a6 6 0 1 1 12 0c0 4.627-6 10-6 10z" />

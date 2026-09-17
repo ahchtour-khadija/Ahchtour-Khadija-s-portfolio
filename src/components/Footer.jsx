@@ -57,7 +57,7 @@ const socialLinks = [
   },
   {
     label: 'Location',
-    href: null,
+    href: 'https://www.google.com/maps/search/?api=1&query=Agadir%2C%20Morocco',
     text: 'Agadir, Morocco',
     ariaLabel: 'Location',
     icon: (
