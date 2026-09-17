@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import SectionTitle from '../components/SectionTitle.jsx';
 import Button from '../components/Button.jsx';
 import ServiceCard from '../components/ServiceCard.jsx';
@@ -181,7 +182,7 @@ export default function HomePage() {
                 digital experiences using modern web technologies.
               </p>
               <div className={`hero-actions ${isVisible ? 'slide-up stagger-3' : ''}`}>
-                <Button variant="primary" size="lg" as="a" href="/about">
+                <Button variant="primary" size="lg" as={Link} to="/about">
                   Learn More About Me
                 </Button>
                 <Button variant="secondary" size="lg" as="a" href={cvFile} download="Khadija-Ahchtour-CV.pdf">
@@ -267,10 +268,10 @@ export default function HomePage() {
                 <h2 id="cta-title" className="cta-title">Ready to work together?</h2>
                 <p className="cta-description">I&apos;m currently available for freelance projects and full-time opportunities. Let&apos;s build something great.</p>
                 <div className="cta-actions">
-                  <Button variant="primary" size="lg" as="a" href="/contacts">
+                  <Button variant="primary" size="lg" as={Link} to="/contacts">
                     Start a Project
                   </Button>
-                  <Button variant="ghost" size="lg" as="a" href="/about">
+                  <Button variant="ghost" size="lg" as={Link} to="/about">
                     Learn More About Me
                   </Button>
                 </div>

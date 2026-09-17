@@ -14,7 +14,7 @@ export default function Button({
   const variantClasses = `btn-${variant}`;
   const sizeClasses = size !== 'base' ? `btn-${size}` : '';
 
-  const isLink = Component === 'a';
+  const isLink = Component !== 'button';
 
   return (
     <Component
