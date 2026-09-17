@@ -8,6 +8,7 @@ import AboutPage from './pages/AboutPage.jsx';
 import ProjectsPage from './pages/ProjectsPage.jsx';
 import SkillsPage from './pages/SkillsPage.jsx';
 import ContactsPage from './pages/ContactsPage.jsx';
+import MobileRecommendModal from './components/MobileRecommendModal.jsx';
 import { sound, initAudioUnlock } from './utils/sound.js';
 
 function App() {
@@ -126,6 +127,7 @@ function App() {
           </Routes>
         </main>
         <Footer />
+        <MobileRecommendModal />
       </div>
     </HashRouter>
   );
