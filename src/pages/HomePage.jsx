@@ -181,7 +181,15 @@ export default function HomePage() {
                 to structured backend systems and databases. I enjoy turning ideas into practical
                 digital experiences using modern web technologies.
               </p>
-              <div className={`hero-actions ${isVisible ? 'slide-up stagger-3' : ''}`}>
+              <div className={`hero-tech ${isVisible ? 'slide-up stagger-3' : ''}`} aria-label="Technologies">
+                {techIcons.map(({ name, Icon }, index) => (
+                  <span key={name} title={name} className="tech-badge" style={{ animationDelay: `${360 + index * 80}ms` }}>
+                    <span className="tech-badge-icon" aria-hidden="true"><Icon size={18} /></span>
+                    <span className="tech-badge-label">{name}</span>
+                  </span>
+                ))}
+              </div>
+              <div className={`hero-actions ${isVisible ? 'slide-up stagger-4' : ''}`}>
                 <Button variant="primary" size="lg" as={Link} to="/about">
                   Learn More About Me
                 </Button>
@@ -191,14 +199,6 @@ export default function HomePage() {
                 <span className="hero-cat hero-cat--inline" aria-hidden="true">
                   <PixelCat />
                 </span>
-              </div>
-              <div className={`hero-tech ${isVisible ? 'slide-up stagger-4' : ''}`} aria-label="Technologies">
-                {techIcons.map(({ name, Icon }, index) => (
-                  <span key={name} title={name} className="tech-badge" style={{ animationDelay: `${360 + index * 80}ms` }}>
-                    <span className="tech-badge-icon" aria-hidden="true"><Icon size={18} /></span>
-                    <span className="tech-badge-label">{name}</span>
-                  </span>
-                ))}
               </div>
             </div>
             <div className="hero-visual">

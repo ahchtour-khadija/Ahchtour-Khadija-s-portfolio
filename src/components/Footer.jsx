@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import Brand from './Brand.jsx';
 import PixelCat from './PixelCat.jsx';
 import { FaHome, FaUser, FaFolder, FaTools, FaEnvelope } from 'react-icons/fa';
@@ -71,13 +71,21 @@ const socialLinks = [
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
+  const location = useLocation();
+
+  const handleBrandClick = (e) => {
+    if (location.pathname === '/') {
+      e.preventDefault();
+      window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+    }
+  };
 
   return (
     <footer className="footer" role="contentinfo">
       <div className="container">
         <div className="footer-grid">
           <div className="footer-brand">
-            <Brand className="brand-footer" />
+            <Brand className="brand-footer" onClick={handleBrandClick} />
             <p className="footer-description">
               Crafting modern web experiences with clean code and creative solutions.
             </p>
@@ -131,9 +139,9 @@ export default function Footer() {
 
         <div className="footer-bottom">
           <p className="copyright">&copy; {currentYear} AK. All rights reserved.</p>
-        </div>
-        <div className="footer-cat">
-          <PixelCat fixedMessage="This portfolio was built with React & Vite." className="footer-mascot" />
+          <div className="footer-cat">
+            <PixelCat fixedMessage="This portfolio was built with React & Vite." className="footer-mascot" />
+          </div>
         </div>
       </div>
     </footer>

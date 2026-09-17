@@ -1215,14 +1215,28 @@
 }
 
 .hero-tech {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: var(--space-2);
+  margin-bottom: var(--space-6);
+  max-width: 420px;
+}
+
+.hero-tech .tech-badge {
+  width: 100%;
+  min-width: 0;
 }
 
 @media (max-width: 900px) {
   .hero-tech {
+    display: flex;
+    flex-wrap: wrap;
     justify-content: center;
+    max-width: 360px;
+  }
+  .hero-tech .tech-badge {
+    width: auto;
+    min-width: 44px;
   }
 }
 
@@ -4380,5 +4394,328 @@
   .mobile-recommend-card.closing {
     opacity: 1;
     transform: none;
+  }
+}
+
+/* ============================================================
+   Mobile hero — intentional continuous composition (<=900px)
+   Keeps desktop intact; only reorders / tightens mobile flow
+   ============================================================ */
+@media (max-width: 900px) {
+  .hero {
+    padding: var(--space-10) 0 var(--space-8);
+  }
+  .hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-6);
+    text-align: center;
+  }
+  .hero-text {
+    display: contents;
+  }
+  .hero-greeting {
+    order: 1;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: var(--space-4);
+  }
+  .hero-name {
+    order: 2;
+    margin-bottom: 0;
+  }
+  .hero-description {
+    order: 4;
+    margin-bottom: var(--space-5);
+    margin-top: var(--space-2);
+  }
+  .hero-visual {
+    order: 3;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: var(--space-5) auto var(--space-4);
+  }
+  .hero-tech {
+    order: 5;
+    width: 100%;
+    max-width: 360px;
+    margin: var(--space-2) auto 0;
+    justify-content: center;
+    gap: var(--space-2);
+    flex-wrap: wrap;
+  }
+  .hero-actions {
+    order: 6;
+    width: 100%;
+    justify-content: center;
+    margin-bottom: 0;
+    gap: var(--space-3);
+    flex-wrap: wrap;
+  }
+  /* Portrait as part of intro — centered with breathing room */
+  .hero-portrait {
+    margin: 0 auto;
+    max-width: 340px;
+    width: 100%;
+  }
+  /* Keep terminal readable and contained on mobile */
+  .hero-terminal {
+    left: 50%;
+    bottom: -30px;
+    transform: translateX(-50%);
+    width: min(250px, 88vw);
+    max-width: 88vw;
+  }
+  /* Tech chips: neat centered wrap, never wider than viewport */
+  .tech-badge {
+    flex: 0 1 auto;
+    max-width: 100%;
+  }
+  /* Cat intentionally near CTA — centered below buttons, not mid-row */
+  .hero-cat--inline {
+    flex-basis: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 0 !important;
+    margin-top: var(--space-4);
+    align-self: center;
+    transform: scale(0.88);
+    transform-origin: center top;
+  }
+  .hero-cat--inline .pixel-cat {
+    margin: 0 auto;
+  }
+  /* Keep decorative code away from content on mobile */
+  .hero .bg-code {
+    display: none !important;
+  }
+}
+
+/* Tighten mobile hero at narrow viewports — 430 / 375 / 320 */
+@media (max-width: 430px) {
+  .hero {
+    padding: var(--space-8) 0 var(--space-6);
+  }
+  .hero-content {
+    gap: var(--space-5);
+  }
+  .hero-description {
+    margin-bottom: var(--space-4);
+    font-size: 0.97rem;
+    line-height: 1.7;
+  }
+  .hero-portrait {
+    max-width: 300px;
+  }
+  .hero-terminal {
+    width: min(230px, 90vw);
+    bottom: -28px;
+  }
+  .hero-tech {
+    max-width: 320px;
+    gap: 0.5rem;
+  }
+  .hero-tech .tech-badge {
+    height: 36px;
+    padding: 0 var(--space-2);
+    font-size: 0.72rem;
+  }
+  .hero-cat--inline {
+    transform: scale(0.84);
+    margin-top: var(--space-3);
+  }
+}
+
+@media (max-width: 390px) {
+  .hero-portrait {
+    max-width: 285px;
+  }
+  .hero-tech {
+    max-width: 300px;
+  }
+}
+
+@media (max-width: 375px) {
+  .hero-portrait {
+    max-width: 272px;
+  }
+  .hero-portrait-tag {
+    font-size: 0.7rem;
+    padding: var(--space-1) var(--space-2);
+  }
+  .hero-terminal {
+    width: min(220px, 92vw);
+  }
+  .hero-cat--inline {
+    transform: scale(0.8);
+  }
+}
+
+@media (max-width: 320px) {
+  .hero-name {
+    font-size: clamp(1.9rem, 8vw, 2.4rem);
+  }
+  .hero-role {
+    font-size: clamp(1rem, 4.5vw, 1.2rem);
+  }
+  .hero-portrait {
+    max-width: 255px;
+  }
+  .hero-image-frame {
+    padding: 8px;
+  }
+  .hero-terminal {
+    width: min(200px, 94vw);
+    bottom: -24px;
+  }
+  .hero-tech {
+    max-width: 280px;
+    gap: 0.4rem;
+  }
+  .hero-tech .tech-badge {
+    height: 34px;
+    font-size: 0.7rem;
+  }
+  .hero-actions {
+    gap: var(--space-2);
+  }
+}
+
+/* ============================================================
+   Mobile footer — clean left-aligned vertical flow (<=768px)
+   Preserves desktop grid; only overrides mobile alignment/spacing
+   ============================================================ */
+@media (max-width: 768px) {
+  .footer {
+    padding: var(--space-8) 0 var(--space-6);
+  }
+  .footer .container {
+    padding-left: max(var(--container-padding), env(safe-area-inset-left));
+    padding-right: max(var(--container-padding), env(safe-area-inset-right));
+  }
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-7);
+    text-align: left;
+    justify-items: stretch;
+    align-items: stretch;
+    margin-bottom: var(--space-6);
+  }
+  .footer-brand {
+    justify-self: stretch;
+    text-align: left;
+    max-width: none;
+    margin: 0;
+    width: 100%;
+  }
+  .footer-brand .brand-footer {
+    margin-bottom: var(--space-3);
+    justify-content: flex-start;
+  }
+  .footer-description {
+    text-align: left;
+    max-width: 32ch;
+  }
+  .footer-nav,
+  .footer-social {
+    justify-self: stretch;
+    text-align: left;
+    width: 100%;
+    border-top: 1px solid var(--color-border);
+    padding-top: var(--space-6);
+  }
+  .footer-nav {
+    justify-self: stretch;
+  }
+  .footer-heading {
+    text-align: left;
+    margin-bottom: var(--space-3);
+  }
+  .footer-links {
+    align-items: flex-start;
+    gap: var(--space-2);
+  }
+  .footer-nav .footer-links {
+    align-items: flex-start;
+  }
+  .footer-link {
+    margin: 0 !important;
+    justify-content: flex-start;
+    text-align: left;
+    width: fit-content;
+    max-width: 100%;
+  }
+  .footer-link:hover {
+    transform: none;
+  }
+  /* Bottom row: copyright left, cat right — balanced, not touching edge */
+  .footer-bottom {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--space-4);
+    text-align: left;
+    padding-top: var(--space-5);
+    padding-bottom: var(--space-1);
+    flex-wrap: nowrap;
+  }
+  .footer-bottom .copyright {
+    flex: 1;
+    min-width: 0;
+    text-align: left;
+    font-size: var(--fs-sm);
+    line-height: 1.5;
+  }
+  .footer-cat {
+    position: static !important;
+    right: auto !important;
+    bottom: auto !important;
+    left: auto !important;
+    top: auto !important;
+    transform: none !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-left: var(--space-3);
+    z-index: 1;
+  }
+  .footer-cat .footer-mascot {
+    transform: scale(0.82);
+    transform-origin: center;
+  }
+  .footer-mascot .pixel-cat-bubble--footer {
+    left: auto;
+    right: 0;
+    transform: none;
+    max-width: min(200px, 78vw);
+  }
+  .footer-mascot .pixel-cat-bubble--footer::after,
+  .footer-mascot .pixel-cat-bubble--footer::before {
+    left: auto;
+    right: 18px;
+    transform: none;
+  }
+}
+
+@media (max-width: 430px) {
+  .footer-grid {
+    gap: var(--space-6);
+  }
+  .footer-cat .footer-mascot {
+    transform: scale(0.78);
+  }
+}
+
+@media (max-width: 375px) {
+  .footer-description {
+    font-size: 0.875rem;
+  }
+  .footer-cat .footer-mascot {
+    transform: scale(0.74);
   }
 }
