@@ -112,7 +112,7 @@ function App() {
   }, []);
 
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/Ahchtour-Khadija-s-portfolio">
       <div className="app">
         <AmbientBackground />
         <Navbar />
