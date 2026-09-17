@@ -9,6 +9,7 @@ import ProjectsPage from './pages/ProjectsPage.jsx';
 import SkillsPage from './pages/SkillsPage.jsx';
 import ContactsPage from './pages/ContactsPage.jsx';
 import MobileRecommendModal from './components/MobileRecommendModal.jsx';
+import ScrollToTop from './components/ScrollToTop.jsx';
 import { sound, initAudioUnlock } from './utils/sound.js';
 
 function App() {
@@ -114,6 +115,7 @@ function App() {
 
   return (
     <HashRouter>
+      <ScrollToTop />
       <div className="app">
         <AmbientBackground />
         <Navbar />
